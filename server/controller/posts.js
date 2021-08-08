@@ -17,7 +17,7 @@ export const getPost = async (req, res) => {
     res.status(500).json({ error: err });
   }
 };
-export const createPost = (req, res) => {
+export const createPost = async (req, res) => {
   try {
     const newPost = req.body;
 
@@ -30,7 +30,7 @@ export const createPost = (req, res) => {
   }
 };
 
-export const updatePost = (req, res) => {
+export const updatePost =async (req, res) => {
   try {
     const updatePost = req.body;
 
