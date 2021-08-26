@@ -1,6 +1,8 @@
-import { combineReducers } from "redux";
-import post from './post'
+import { combineReducers } from 'redux';
+import post from './post';
+import modal from './modal';
 
 export default combineReducers({
-    post,
-})
+  post,
+  modal,
+});

@@ -2,14 +2,6 @@ import { PostModel } from "../models/post_model.js";
 
 export const getPost = async (req, res) => {
   try {
-    const post = new PostModel({
-      title: "HI",
-      content: "Anhon",
-      author: "Anonymous",
-    });
-
-    post.save();
-
     const posts = await PostModel.find();
     console.log("Post", posts);
     res.status(200).json(posts);
@@ -20,7 +12,6 @@ export const getPost = async (req, res) => {
 export const createPost = async (req, res) => {
   try {
     const newPost = req.body;
-
     const post = new PostModel(newPost);
     await post.save();
 

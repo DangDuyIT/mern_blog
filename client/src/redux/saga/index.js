@@ -1,8 +1,8 @@
-import { takeLatest, call, put } from "redux-saga/effects";
-import * as actions from "../actions";
-import * as api from "../../api";
+import { takeLatest, call, put } from 'redux-saga/effects';
+import * as actions from '../actions';
+import * as api from '../../api';
 
-function* mySaga(action) {
+function* fetchPostsSaga(action) {
   try {
     const posts = yield call(api.fetchPosts);
     yield put(actions.getPosts.getPostsSuccess(posts.data));
@@ -11,7 +11,7 @@ function* mySaga(action) {
     yield put(actions.getPosts.getPostsFailure(err));
   }
 }
-export default mySaga;
+
 // function* createPostSaga(action) {
 //   try {
 //     const post = yield call(api.createPost, action.payload);
@@ -32,12 +32,12 @@ export default mySaga;
 //   }
 // }
 
-// function* mySaga() {
-//   yield takeLatest(actions.getPosts.getPostsRequest, fetchPostsSaga);
-//   yield takeLatest(actions.createPost.createPostRequest, createPostSaga);
-//   yield takeLatest(actions.updatePost.updatePostRequest, updatePostSaga);
-// }
+function* mySaga() {
+  yield takeLatest(actions.getPosts.getPostsRequest, fetchPostsSaga);
+  // yield takeLatest(actions.createPost.createPostRequest, createPostSaga);
+  // yield takeLatest(actions.updatePost.updatePostRequest, updatePostSaga);
+}
 
 // generator function ES6
 
-
+export default mySaga;
